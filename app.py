@@ -1,5 +1,5 @@
 #Udemy Coursework -> Create student registration system
-
+student_list = []
 
 def create_student():
     #Ask the user for students name
@@ -27,6 +27,17 @@ def calculate_average_mark(student):
         return average
     except:
         print("Error encounter - stopping program")
+
+
+def print_student_details(student):
+    #Prints out use information in a string
+    print("{} average mark is {}".format(student["name"],calculate_average_mark(student)))
+
+
+def print_student_list(students):
+    for student in students:
+        print(print_student_details(students))
+        
 
 
 s=create_student()
