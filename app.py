@@ -37,11 +37,37 @@ def print_student_details(student):
 def print_student_list(students):
     for student in students:
         print(print_student_details(students))
-        
 
 
-s=create_student()
-add_mark(s,90)
-add_mark(s,50)
-print(s)
-print("{} average mark is {}".format(s["name"],calculate_average_mark(s)))
+def menu():
+    #add a student to student student_list
+    #add a mark to student
+    #Print a list of students
+    #Exit the application
+    while True:
+        app_decision = str(raw_input("Do you want to exit the application? Y or N "))
+        if app_decision == "Y":
+            name_of_student=create_student()
+            while True:
+                app_decision = str(raw_input("Do you want to exit the application? Y or N "))
+                if app_decision == "Y":
+                    mark_of_student=int(raw_input("Enter the mark of the student : "))
+                    add_mark(name_of_student,mark_of_student)
+                    decision = str(raw_input("Do you want to add additional marks to to this student? Y or N "))
+                    if decision == "Y":
+                        continue
+                    else:
+                        print("Adding {} to the student list..".format(name_of_student["name"]))
+                        student_list.append(name_of_student)
+                        student_decision = str(raw_input("Do you want to add another student? Y or N "))
+                        if student_decision == "Y":
+                            break
+                        else:
+                            for student in student_list:
+                                print("Printing the list of students: /n", student)
+                                break
+        else:
+            break
+
+if __name__ == "__main__":
+    menu()
